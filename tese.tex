@@ -1,0 +1,228 @@
+%%% Exemplo de utilização da classe ITA
+%%%
+%%%   por        Fábio Fagundes Silveira   -  ffs [at] ita [dot] br
+%%%              Benedito C. O. Maciel     -  bcmaciel [at] ita [dot] br
+%%%              Giovani Volnei Meinertz   -  giovani [at] ita [dot] br
+%%%    	         Hudson Alberto Bode       -  bode [at] ita [dot]br
+%%%    	         P. I. Braga de Queiroz    -  pi [at] ita [dot] br
+%%%    	         Jorge A. B. Gripp         -  gripp [at] ita [dot] br
+%%%    	         Juliano Monte-Mor         -  jamontemor [at] yahoo [dot] com [dot] br
+%%%    	         Tarcisio A. B. Gripp      -  tarcisio.gripp [at] gmail [dot] com
+%%%    	         
+%%%
+%%%  IMPORTANTE: O texto contido neste exemplo nao significa absolutamente nada.  :-)
+%%%              O intuito aqui eh demonstrar os comandos criados na classe e suas
+%%%              respectivas utilizacoes.
+%%%
+%%%  Tese.tex  2015-04-08
+%%%  $HeadURL: http://www.apgita.org.br/apgita/teses-e-latex.php $
+%%%
+%%% ITALUS
+%%% Instituto Tecnológico de Aeronáutica --- ITA, Sao Jose dos Campos, Brasil
+%%%                   http://groups.yahoo.com/group/italus/
+%%% Discussion list: italus {at} yahoogroups.com
+%%%
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Parametros da classe ITA para inserir em \documentclass[?]{?}
+%   tg       = Trabalho de Graduacao
+%   tgfem    = Para Engenheiras
+%   msc      = Dissertacao de Mestrado
+%   mscfem   = Para Mestras
+%   dsc      = Tese de Doutorado
+%   dscfem   = Para Doutoras
+%   quali    = Exame de Qualificacao
+%   qualifem = Exame de Qualificacao para Doutoras
+%   dv       = 'Draft Version'     --> imprime 'Versao Preliminar + data no rodape
+%   eng      = para teses em inglês
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%se fosse em inglês: \documentclass[dsc, eng]{ita}
+%para ``draft version'': \documentclass[dsc, dv]{ita} ou \documentclass[dsc, eng, dv]{ita}
+
+\documentclass[tg, eng]{ita}    % ITA.cls based on standard book.cls 
+% Quando alterar a classe, por exemplo de [msc] para [msc, eng]) rode mais uma vez o botão BUILD OUTPUT caso haja erro
+\usepackage{ae}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{subfig}
+\usepackage{multirow}
+\usepackage{float}
+
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Espaçamento padrão de todo o documento
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\onehalfspacing
+
+%singlespacing Para um espaçamento simples
+%onehalfspacing Para um espaçamento de 1,5
+%doublespacing Para um espaçamento duplo
+
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Identificacoes (se o trabalho for em inglês, insira os dados em inglês)
+% Para entradas abreviadas de Professora (Profa.) em português escreva: Prof$^\textnormal{a}$.
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\course{Computer Engineering} % Programa de PG ou Curso de Graduação
+\dept{Computer Engineering} % Divisão Acadêmica no ITA
+
+% Autor do trabalho: Nome Sobrenome
+\authorgender{masc}                     %sexo: masc ou fem
+\author{Márcio Valença}{Ramos}
+\itaauthoraddress{Rua H8B, 239}{12228-461}{São José dos Campos--SP}
+
+% Titulo da Tese/Dissertação
+\title{Relate Kanji: A Statistical Analysis Of The Japanese Language And Consequences For Teaching Methods}
+
+% Orientador
+\advisorgender{masc}                    % masc ou fem
+\advisor{Prof. Dr.}{Carlos Henrique Costa Ribeiro}{ITA}
+
+% Coorientador (Caso não haja coorientador, colocar ambas as variáveis \coadvisorgender e \coadvisor comentadas, com um % na frente)
+%\coadvisorgender{fem}									% masc ou fem
+%\coadvisor{Prof$^\textnormal{a}$.~Dr$^\textnormal{a}$.}{Doralice Serra}{OVNI}
+
+% Pró-reitor da Pós-graduação
+%\bossgender{masc}												% masc ou fem
+%\boss{Prof.~Dr.}{NAO USADO}
+
+%Coordenador do curso no caso de TG
+\bosscoursegender{fem}									% masc ou fem
+\bosscourse{Prof.Dr.}{Cecília de Azevedo Castro César}
+
+% Palavras-Chaves informadas pela Biblioteca -> utilizada na CIP
+\kwcip{Kanji}
+\kwcip{Language}
+\kwcip{Linguistics}
+\kwcip{Statistics}
+\kwcip{Pedagogy}
+\kwcip{Andragogy}
+
+% membros da banca examinadora
+
+\examiner{Prof. Dr.}{Carlos Henrique Costa Ribeiro}{}{ITA}
+\examiner{Prof. Dr.}{Clóvis Torres Fernandes}{}{ITA}
+
+% Data da defesa (mês em maiúsculo, se trabalho em inglês, e minúsculo se trabalho em português) 
+\date{21}{DECEMBER}{2016}
+
+% Número CDU - (somente para TG)
+\cdu{TBD}
+
+% Glossario
+\makeglossary
+\frontmatter
+
+\begin{document}
+% Folha de Rosto e Capa para o caso do TG
+\maketitle
+
+% Dedicatoria: Nao esqueca essa secao  ... :-)
+\begin{itadedication}
+I dedicate this thesis to... TBW
+\end{itadedication}
+
+% Agradecimentos
+\begin{itathanks}
+\input{Cap0/agradecimentos}
+\end{itathanks}
+
+% Epígrafe
+\thispagestyle{empty}
+\ifhyperref\pdfbookmark[0]{\nameepigraphe}{epigrafe}\fi
+\begin{flushright}
+\begin{spacing}{1}
+\mbox{}\vfill
+{\sffamily\itshape
+``Understanding is a kind of ecstasy.''\\}
+--- \textsc{Carl Sagan}
+\end{spacing}
+\end{flushright}
+
+% Resumo
+%\begin{abstract}
+%\input{Cap0/resumo}
+%\end{abstract}
+
+% Abstract
+\begin{englishabstract}
+\input{Cap0/abstract}
+\end{englishabstract}
+
+% Lista de figuras
+\listoffigures %opcional
+
+% Lista de tabelas
+\listoftables %opcional
+
+% Lista de abreviaturas
+\listofabbreviations
+\input{Cap0/listaabreviaturas} %opcional
+
+% Lista de simbolos
+\listofsymbols
+\input{Cap0/listasimbolos} %opcional
+
+% Sumario
+\tableofcontents
+
+\mainmatter
+% Os capitulos comecam aqui
+
+\chapter{Introduction}
+\input{Cap1/cap1}
+
+\chapter{Linguistic Frequency Distribution}
+\input{Cap2/cap2}
+
+\chapter{Dealing With Kanji Readings}
+\input{Cap3/cap3}
+
+\chapter{Working With Graphs}
+\input{Cap4/cap4}
+
+\chapter{Applying Statistical Knowledge To Teaching Methods}
+\input{Cap5/cap5}
+
+\chapter{Conclusion}
+\input{Cap6/cap6}
+
+% REFERENCIAS BIBLIOGRAFICAS
+\renewcommand\bibname{\itareferencesnamebabel} %renomear título do capítulo referências
+\bibliography{Referencias/referencias}
+
+% Apendices
+\appendix
+\chapter{Placeholder for Appendix} %opcional
+\input{ApeA/apendiceA}
+
+% Anexos
+\annex
+\chapter{Placeholder for Annex} %opcional
+\input{AneA/anexoA}
+
+% Glossario
+%\itaglossary
+%\printglossary
+
+% Folha de Registro do Documento
+% Valores dos campos do formulario
+\FRDitadata{21 de Dezembro de 2016}
+\FRDitadocnro{DCTA/ITA/TC-018/2016} %(o número de registro você solicita a biblioteca)
+\FRDitaorgaointerno{Instituto Tecnológico de Aeronáutica -- Computer Engineering Division -- ITA}
+%Exemplo no caso de pós-graduação: Instituto Tecnol{\'o}gico de Aeron{\'a}utica -- ITA
+
+\FRDitapalavrasautor{Kanji; Language; Linguistics; Statistics; Pedagogy; Andragogy}
+\FRDitapalavrasresult{Kanji; Language; Statistics}
+%Exemplo no caso de graduação (TG):
+\FRDitapalavraapresentacao{Trabalho de Graduação, ITA, São José dos Campos, 2016. \NumPenultimaPagina\ páginas.}
+%Exemplo no caso de pós-graduação (msc, dsc):
+%\FRDitapalavraapresentacao{ITA, São José dos Campos. Curso de Mestrado. Programa de Pós-Graduação em Engenharia Aeronáutica e Mecânica. Área de Sistemas Aeroespaciais e Mecatrônica. Orientador: Prof.~Dr. Adalberto Santos Dupont. Coorientadora: Prof$^\textnormal{a}$.~Dr$^\textnormal{a}$. Doralice Serra. Defesa em 05/03/2015. Publicada em 25/03/2015.}
+\FRDitaresumo{\input{Cap0/abstract}}
+%  Primeiro Parametro: Nacional ou Internacional -- N/I
+%  Segundo parametro: Ostensivo, Reservado, Confidencial ou Secreto -- O/R/C/S
+\FRDitaOpcoes{N}{O}
+% Cria o formulario
+\itaFRD
+
+\end{document}
+% Fim do Documento. O massacre acabou!!! :-)
