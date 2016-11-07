@@ -45,9 +45,20 @@
 \usepackage{epsfig}
 \usepackage{amsmath}
 \usepackage{amssymb} 
-\usepackage{subfig}
 \usepackage{multirow}
 \usepackage{float}
+
+% Packages to correctly use japanese characters
+
+\usepackage{CJKutf8}
+
+% Custom packs
+
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{subcaption}
+\usepackage{minted}
+\usepackage{longtable}
 
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 % Espaçamento padrão de todo o documento
@@ -112,13 +123,22 @@
 \makeglossary
 \frontmatter
 
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Shorthands
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\newcommand{\jap}[1]{\begin{CJK}{UTF8}{min}#1\end{CJK}}
+\newcommand{\chin}[1]{\begin{CJK}{UTF8}{gbsn}#1\end{CJK}}
+
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 \begin{document}
 % Folha de Rosto e Capa para o caso do TG
 \maketitle
 
 % Dedicatoria: Nao esqueca essa secao  ... :-)
 \begin{itadedication}
-I dedicate this thesis to... TBW
+I dedicate this thesis to the nameless and long exploded suns that fused together the atoms that make up my body and all of that which is around me, including the ones I love. Without those long dead and anonymous suns, nothing as I know would ever come to existence, hence I am forever grateful to them.
 \end{itadedication}
 
 % Agradecimentos
@@ -155,12 +175,12 @@ I dedicate this thesis to... TBW
 \listoftables %opcional
 
 % Lista de abreviaturas
-\listofabbreviations
-\input{Cap0/listaabreviaturas} %opcional
+%\listofabbreviations
+%\input{Cap0/listaabreviaturas} %opcional
 
 % Lista de simbolos
-\listofsymbols
-\input{Cap0/listasimbolos} %opcional
+%\listofsymbols
+%\input{Cap0/listasimbolos} %opcional
 
 % Sumario
 \tableofcontents
@@ -168,22 +188,22 @@ I dedicate this thesis to... TBW
 \mainmatter
 % Os capitulos comecam aqui
 
-\chapter{Introduction}
+\chapter{Introduction}\label{chap:intro}
 \input{Cap1/cap1}
 
-\chapter{Linguistic Frequency Distribution}
+\chapter{Linguistic Frequency Distribution}\label{chap:frequency}
 \input{Cap2/cap2}
 
-\chapter{Dealing With Kanji Readings}
-\input{Cap3/cap3}
+% \chapter{Dealing With Kanji Readings}\label{chap:readings}
+% \input{Cap3/cap3}
 
-\chapter{Working With Graphs}
+\chapter{Working With Graphs}\label{chap:graphs}
 \input{Cap4/cap4}
 
-\chapter{Applying Statistical Knowledge To Teaching Methods}
+\chapter{Applying Statistical Knowledge To Teaching Methods}\label{chap:teaching}
 \input{Cap5/cap5}
 
-\chapter{Conclusion}
+\chapter{Conclusion}\label{chap:conclusion}
 \input{Cap6/cap6}
 
 % REFERENCIAS BIBLIOGRAFICAS
@@ -192,13 +212,16 @@ I dedicate this thesis to... TBW
 
 % Apendices
 \appendix
-\chapter{Placeholder for Appendix} %opcional
+\chapter{Linguistic Definitions and Explanations}
 \input{ApeA/apendiceA}
+\chapter{Japanese Language Details}
+\input{ApeB/apendiceB}
+\chapter{Ordered lists for Kanji Study}
+\input{ApeC/apendiceC}
 
 % Anexos
-\annex
-\chapter{Placeholder for Annex} %opcional
-\input{AneA/anexoA}
+%\annex
+
 
 % Glossario
 %\itaglossary
@@ -223,6 +246,5 @@ I dedicate this thesis to... TBW
 \FRDitaOpcoes{N}{O}
 % Cria o formulario
 \itaFRD
-
 \end{document}
 % Fim do Documento. O massacre acabou!!! :-)
